@@ -121,7 +121,7 @@ SELECT celebrities.name AS celebrity_name, countries.name AS country FROM celebr
 
 -- 問30
 -- 最年長が50歳以上かつ最年少が30歳以下の国を表示させてください。
-
+SELECT DISTINCT(ct.name) AS country_name FROM celebrities cl JOIN countries ct ON cl.country_code = ct.code WHERE cl.age <= 30 || cl.age >= 50;
 
 -- 問31
 -- 1991年生まれと、1981年生まれの有名人が何人いるか調べてください。ただし、日付関数は使用せず、UNION句を使用してください。
