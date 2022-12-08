@@ -1,9 +1,28 @@
 <?php
-    define('ROOT_PATH', str_replace('public', '', $_SERVER['DOCUMENT_ROOT']));
-    $parse = parse_url($_SERVER['REQUEST_URI']);
+require_once __DIR__ . '/../config.php';
 
-	if (mb_substr($parse['path'], -1) === '/') {
-    $parse['path'] .= $_SERVER['SCRIPT_NAME'];
+$parse = parse_url($_SERVER['REQUEST_URI']);
+$method = strtolower($_SERVER['REQUEST_METHOD']);
+
+if (mb_substr($parse['path'], -1) === '/') {
+    $parse['path'] .= 'index';
+}
+
+route($parse, $method);
+
+function route($parse, $method)
+{
+    $rpath = str_replace(BASE_CONTEXT_PATH, '', $parse['path']);
+
+    $targetFile = ROOT_PATH . 'Controllers/' . "{$rpath}.php";
+
+    if (!file_exists($targetFile)) {
+        require_once ROOT_PATH . 'Views/404.php';
+        return;
     }
-    require_once(ROOT_PATH . 'Views/' . trim($parse['path'], '/'));
-?>
+
+    require_once $targetFile;
+
+    $fn = "\\controller\\{$rpath}\\{$method}";
+    $fn();
+}
