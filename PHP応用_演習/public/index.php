@@ -1,5 +1,17 @@
 <?php
+
 require_once __DIR__ . '/../config.php';
+
+// Db
+require_once ROOT_PATH . 'Db/database.php';
+require_once ROOT_PATH . 'Db/datasource.php';
+require_once ROOT_PATH . 'Db/contact.query.php';
+
+use db\ContactQuery;
+
+$contact = new ContactQuery;
+$result = $contact->fetchByAll();
+var_dump($result);
 
 $parse = parse_url($_SERVER['REQUEST_URI']);
 $method = strtolower($_SERVER['REQUEST_METHOD']);
