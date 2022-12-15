@@ -5,14 +5,6 @@ use db\DataSource;
 
 class ContactQuery
 {
-    public int $id;
-    public string $name;
-    public string $kana;
-    public string $tel;
-    public string $email;
-    public string $body;
-    public int $del_flg;
-
     public static function fetchByAll()
     {
         $db = new DataSource;
@@ -20,5 +12,20 @@ class ContactQuery
         $result = $db->selectAll($sql, DataSource::CLS, static::class);
 
         return $result;
+    }
+
+    public static function create($contact)
+    {
+        $db = new DataSource;
+        $sql = "INSERT INTO contacts (name, kana, tel, email, body)
+                VALUES (:name, :kana, :tel, :email, :body)";
+
+        return $db->execute($sql, [
+            ':name' => $contact->name,
+            ':kana' => $contact->kana,
+            ':tel' => $contact->tel,
+            ':email' => $contact->email,
+            ':body' => $contact->body
+        ]);
     }
 }

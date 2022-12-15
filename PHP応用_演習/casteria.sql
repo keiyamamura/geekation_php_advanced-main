@@ -21,6 +21,6 @@ CREATE TABLE `contacts` (
 );
 
 INSERT INTO contacts (name, kana, tel, email, body) VALUES
-	('test1', 'テスト', '09011111111', 'test@test.com1', 'test1'),
-	('test2', 'テスト', '09022222222', 'test@test.com2', 'test2'),
-	('test3', 'テスト', '09033333333', 'test@test.com3', 'test3');
+	('test1', 'テスト1', '09011111111', 'test1@test.com', 'test1'),
+	('test2', 'テスト2', '09022222222', 'test2@test.com', 'test2'),
+	('test3', 'テスト3', '09033333333', 'test3@test.com', 'test3');
