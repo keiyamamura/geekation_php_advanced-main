@@ -8,7 +8,24 @@ use lib\Msg;
 
 function get()
 {
-    require_once ROOT_PATH . 'Views/' . "contact/check.php";
+    $contact = ContactModel::getSession();
+
+    if (empty($contact)) {
+        redirect(GO_CONTACT_INDEX);
+    }
+
+    if (($contact->isValidName()
+        * $contact->isValidKana()
+        * $contact->isValidTel()
+        * $contact->isValidEmail()
+        * $contact->isValidBody())) {
+        require_once ROOT_PATH . 'Views/' . "contact/check.php";
+    } else {
+        ContactModel::clearSession();
+        Msg::clearSession();
+        Msg::push(Msg::ERROR, '不正な操作がありました。もう一度お試しください。');
+        redirect(GO_CONTACT_INDEX);
+    }
 }
 
 function post()

@@ -35,9 +35,10 @@
             <span>body:</span><br>
             <span><?php echo nl2br($contact->body); ?></span>
         </div>
+        <p>上記の内容でよろしいですか？</p>
         <div>
-            <a href="<?php echo the_url(GO_CONTACT_INDEX); ?>">やり直す</a>
-            <input type="submit" value="登録">
+            <a href="<?php echo the_url(GO_CONTACT_INDEX); ?>">キャンセル</a>
+            <input type="submit">
         </div>
     </form>
 </body>

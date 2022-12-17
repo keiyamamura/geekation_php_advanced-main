@@ -22,12 +22,10 @@ function post()
     ContactModel::setSession($contact);
 
     if (($contact->isValidName()
-    * $contact->isValidKana()
-            * $contact->isValidTel()
-            * $contact->isValidEmail()
-            * $contact->isValidBody())) {
-
-        Msg::push(Msg::INFO, '登録内容はこちらでよろしいですか？');
+        * $contact->isValidKana()
+        * $contact->isValidTel()
+        * $contact->isValidEmail()
+        * $contact->isValidBody())) {
         redirect(GO_CHECK);
     } else {
         Msg::push(Msg::ERROR, '登録失敗');
