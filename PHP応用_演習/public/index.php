@@ -33,5 +33,3 @@ if (mb_substr($parse['path'], -1) === '/') {
 }
 
 route($parse, $method);
-
-var_dump($result);
