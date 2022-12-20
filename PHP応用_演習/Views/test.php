@@ -23,26 +23,31 @@
                     <h1 class="">お問い合わせフォーム</h1>
                     <div class="mt-2">
                         <div class="login-form bg-white p-4 shadow-sm mx-auto rounded">
-                            <form action="" method="POST">
+                            <form class="validate-form" action="" method="POST" novalidate>
                                 <div class="form-group">
                                     <label for="name">名前</label>
-                                    <input id="name" type="text" name="name" class="form-control">
+                                    <input id="name" type="text" name="name" class="form-control validate-target" required maxlength="10" autofocus>
+                                    <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="kana">ふりがな</label>
-                                    <input id="kana" type="text" name="kana" class="form-control">
+                                    <input id="kana" type="text" name="kana" class="form-control validate-target" required maxlength="10">
+                                    <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="tel">電話番号</label>
-                                    <input id="tel" type="text" name="tel" class="form-control">
+                                    <input id="tel" type="text" name="tel" class="form-control validate-target" pattern="[0-9]+" maxlength="11">
+                                    <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">メールアドレス</label>
-                                    <input id="email" type="password" name="email" class="form-control">
+                                    <input id="email" type="text" name="email" class="form-control validate-target" pattern="^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$" maxLength="100" required>
+                                    <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="body">お問い合わせ内容</label>
-                                    <textarea id="body" name="body" cols="30" rows="5" class="form-control"></textarea>
+                                    <textarea id="body" name="body" cols="30" rows="5" class="form-control validate-target" required></textarea>
+                                    <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="text-right">
                                     <div>
@@ -62,7 +67,7 @@
                         <div class="login-form bg-white p-4 shadow-sm mx-auto rounded">
                             <table class="table">
                                 <thead class="align-items-center">
-                                    <tr>
+                                    <tr class="table-primary">
                                         <th scope="col">氏名</th>
                                         <th scope="col">ふりがな</th>
                                         <th scope="col">電話番号</th>
@@ -80,7 +85,7 @@
                                         <td class="align-middle">test1@test.com</td>
                                         <td class="align-middle">test1 test1 </td>
                                         <td>
-                                            <div class="align-items-center">
+                                            <div class="align-items-center text-right">
                                                 <a href="" class="btn btn-primary mr-2">編集</a>
                                                 <input type="submit" value="削除" class="btn btn-danger shadow-sm">
                                             </div>
@@ -93,7 +98,7 @@
                                         <td class="align-middle">test2@test.com</td>
                                         <td class="align-middle">test2 test2 </td>
                                         <td>
-                                            <div class="align-items-center">
+                                            <div class="align-items-center text-right">
                                                 <a href="" class="btn btn-primary mr-2">編集</a>
                                                 <input type="submit" value="削除" class="btn btn-danger shadow-sm">
                                             </div>
@@ -106,7 +111,7 @@
                                         <td class="align-middle">test3@test.com</td>
                                         <td class="align-middle">test3 test3 test3</td>
                                         <td class="align-middle">
-                                            <div class="align-items-center">
+                                            <div class="align-items-center text-right">
                                                 <a href="" class="btn btn-primary mr-2">編集</a>
                                                 <input type="submit" value="削除" class="btn btn-danger shadow-sm">
                                             </div>
@@ -120,6 +125,7 @@
             </div>
         </div>
     </div>
+    <script src="../js/contact.js"></script>
     <?php include("footer.php") ?>
 </body>
 
