@@ -18,12 +18,9 @@ require_once ROOT_PATH . 'Models/contact.model.php';
 // Message
 require_once ROOT_PATH . 'libs/message.php';
 
-use db\ContactQuery;
 use function lib\route;
 
 session_start();
-$contact = new ContactQuery;
-$result = $contact->fetchByAll();
 
 $parse = parse_url($_SERVER['REQUEST_URI']);
 $method = strtolower($_SERVER['REQUEST_METHOD']);

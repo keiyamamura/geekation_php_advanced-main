@@ -3,11 +3,16 @@
 namespace controller\contact\index;
 
 use model\ContactModel;
+use db\ContactQuery;
 use lib\Msg;
 
 function get()
 {
     require_once ROOT_PATH . 'Views/' . "contact/index.php";
+    $contact = new ContactQuery;
+    $lists = $contact->fetchByAll();
+
+    \view\contact\index($lists);
 }
 
 function post()
