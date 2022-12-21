@@ -7,8 +7,7 @@ use lib\Msg;
 
 function get()
 {
-    // require_once ROOT_PATH . 'Views/' . "contact/index.php";
-    require_once ROOT_PATH . 'Views/' . 'test.php';
+    require_once ROOT_PATH . 'Views/' . "contact/index.php";
 }
 
 function post()

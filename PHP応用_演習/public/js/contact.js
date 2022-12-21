@@ -18,7 +18,6 @@ function validate_form() {
 				return;
 			}
 
-			console.log($target.id === 'name');
 			if ($target.checkValidity()) {
 				$target.classList.add('is-valid');
 				$target.classList.remove('is-invalid');

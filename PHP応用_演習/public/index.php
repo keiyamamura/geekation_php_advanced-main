@@ -32,4 +32,6 @@ if (mb_substr($parse['path'], -1) === '/') {
     $parse['path'] .= 'index';
 }
 
+require_once ROOT_PATH . 'Views/partials/header.php';
 route($parse, $method);
+require_once ROOT_PATH . 'Views/partials/footer.php';
