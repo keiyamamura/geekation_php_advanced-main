@@ -83,7 +83,7 @@ function index($lists)
                                             <td class="align-middle"><?php echo nl2br(h($list->body)); ?></td>
                                             <td>
                                                 <div class="align-items-center text-right">
-                                                    <a href="" class="btn btn-primary mr-2">編集</a>
+                                                    <a href="<?php the_url('contact/edit?id=' . $list->id); ?>" class="btn btn-primary mr-2">編集</a>
                                                     <input type="submit" value="削除" class="btn btn-danger shadow-sm">
                                                 </div>
                                             </td>

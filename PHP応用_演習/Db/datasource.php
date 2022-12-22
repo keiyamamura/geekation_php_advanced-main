@@ -18,9 +18,9 @@ class DataSource
         $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
 
-    public function selectAll($sql = "", $type = '', $cls = '')
+    public function selectAll($sql = "", $params = [], $type = '', $cls = '')
     {
-        $stmt = $this->executeSql($sql);
+        $stmt = $this->executeSql($sql, $params);
         if ($type === static::CLS) {
             return $stmt->fetchAll(PDO::FETCH_CLASS, $cls);
         } else {
@@ -36,7 +36,7 @@ class DataSource
 
     public function selectOne($sql = "", $params = [], $type = '', $cls = '')
     {
-        $result = $this->select($sql, $params, $type, $cls);
+        $result = $this->selectAll($sql, $params, $type, $cls);
         return count($result) > 0 ? $result[0] : false;
     }
 
