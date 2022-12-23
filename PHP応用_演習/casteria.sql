@@ -20,6 +20,10 @@ CREATE TABLE `contacts` (
 	`created_at` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '送信日時'
 );
 
+--
+-- Test
+--
+
 INSERT INTO contacts (name, kana, tel, email, body) VALUES
 	('test1', 'テスト1', '09011111111', 'test1@test.com', 'test1'),
 	('test2', 'テスト2', '09022222222', 'test2@test.com', 'test2'),
