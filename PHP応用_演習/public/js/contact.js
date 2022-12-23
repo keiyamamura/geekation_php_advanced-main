@@ -1,4 +1,6 @@
 validate_form();
+destroy_btn();
+
 function validate_form() {
 	const $inputs = document.querySelectorAll('.validate-target');
 	const $form  = document.querySelector('.validate-form');
@@ -50,4 +52,19 @@ function activateSubmitBtn($form) {
 	} else {
 		$submitBtn.setAttribute('disabled', true);
 	}
+}
+
+function destroy_btn() {
+	const $destroys = document.querySelectorAll('.destroy-btn');
+	$destroys.forEach($destroy => {
+		$destroy.addEventListener('click', e => {
+			e.preventDefault();
+
+			if (!confirm('本当に削除しますか？')) {
+				return;
+			}
+			
+			$destroy.parentNode.submit();
+		});
+	});
 }

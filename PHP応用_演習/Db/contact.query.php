@@ -56,4 +56,15 @@ class ContactQuery
             ':body' => $contact->body
         ]);
     }
+
+    public static function destroy($id)
+    {
+        $db = new DataSource;
+        $sql = "UPDATE contacts SET del_flg = 1
+                WHERE id = :id";
+
+        return $db->execute($sql, [
+            ':id' => $id,
+        ]);
+    }
 }

@@ -56,6 +56,7 @@ function index($lists)
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12 my-5">
                     <h1 class="">お問い合わせ一覧</h1>
@@ -82,9 +83,13 @@ function index($lists)
                                             <td class="align-middle"><?php echo h($list->email); ?></td>
                                             <td class="align-middle"><?php echo nl2br(h($list->body)); ?></td>
                                             <td>
-                                                <div class="align-items-center text-right">
+                                                <div class="d-flex align-items-center text-right">
                                                     <a href="<?php the_url('contact/edit?id=' . $list->id); ?>" class="btn btn-primary mr-2">編集</a>
-                                                    <input type="submit" value="削除" class="btn btn-danger shadow-sm">
+
+                                                    <form action="<?php the_url('contact/destroy'); ?>" method="post">
+                                                        <input type="hidden" name="id" value="<?php echo h($list->id); ?>">
+                                                        <input type="submit" class="btn btn-danger destroy-btn" value="削除"></input>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
