@@ -71,8 +71,7 @@ function index($lists)
                                             <th scope="col">電話番号</th>
                                             <th scope="col">メールアドレス</th>
                                             <th scope="col">お問い合わせ内容</th>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
+                                            <th scope="col" colspan="2"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -81,17 +80,15 @@ function index($lists)
                                                 <th scope="row" class="align-middle"><?php echo h($list->name); ?></th>
                                                 <td class="align-middle"><?php echo h($list->kana); ?></td>
                                                 <td class="align-middle"><?php echo h($list->tel); ?></td>
-                                                <td class="align-middle"><?php echo h($list->email); ?></td>
-                                                <td class="align-middle"><?php echo nl2br(h($list->body)); ?></td>
-                                                <td>
-                                                    <div class="d-flex align-items-center text-right">
-                                                        <a href="<?php the_url('contact/edit?id=' . $list->id); ?>" class="btn btn-primary mr-2">編集</a>
+                                                <td class="align-middle truncate"><?php echo h($list->email); ?></td>
+                                                <td class="align-middle truncate"><?php echo nl2br(h($list->body)); ?></td>
+                                                <td class="d-flex align-items-center text-right">
+                                                    <a href="<?php the_url('contact/edit?id=' . $list->id); ?>" class="btn btn-primary mr-2">編集</a>
 
-                                                        <form action="<?php the_url('contact/destroy'); ?>" method="post">
-                                                            <input type="hidden" name="id" value="<?php echo h($list->id); ?>">
-                                                            <input type="submit" class="btn btn-danger destroy-btn" value="削除"></input>
-                                                        </form>
-                                                    </div>
+                                                    <form action="<?php the_url('contact/destroy'); ?>" method="post">
+                                                        <input type="hidden" name="id" value="<?php echo h($list->id); ?>">
+                                                        <input type="submit" class="btn btn-danger destroy-btn" value="削除"></input>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

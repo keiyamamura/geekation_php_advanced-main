@@ -13,6 +13,13 @@ ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
 	border-collapse: collapse;
 }
 
+.truncate {
+	text-overflow: ellipsis;
+	hite-space: nowrap;
+	overflow: hidden;
+	max-width: 0;
+}
+
 textarea { font-size: 100%; vertical-align:middle;}
 img { border-style: none; display: block; }
 hr { display: none; }
