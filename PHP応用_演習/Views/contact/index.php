@@ -61,42 +61,44 @@ function index($lists)
                 <div class="col-md-12 my-5">
                     <h1 class="">お問い合わせ一覧</h1>
                     <div class="mt-2">
-                        <div class="login-form bg-white p-4 shadow-sm mx-auto rounded">
-                            <?php if (!empty($lists)) : ?>
-                                <table class="table">
-                                    <thead class="align-items-center">
-                                        <tr class="table-primary">
-                                            <th scope="col">氏名</th>
-                                            <th scope="col">ふりがな</th>
-                                            <th scope="col">電話番号</th>
-                                            <th scope="col">メールアドレス</th>
-                                            <th scope="col">お問い合わせ内容</th>
-                                            <th scope="col" colspan="2"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($lists as $list) : ?>
-                                            <tr class="align-middle">
-                                                <th scope="row" class="align-middle"><?php echo h($list->name); ?></th>
-                                                <td class="align-middle"><?php echo h($list->kana); ?></td>
-                                                <td class="align-middle"><?php echo h($list->tel); ?></td>
-                                                <td class="align-middle truncate"><?php echo h($list->email); ?></td>
-                                                <td class="align-middle truncate"><?php echo nl2br(h($list->body)); ?></td>
-                                                <td class="d-flex align-items-center text-right">
-                                                    <a href="<?php the_url('contact/edit?id=' . $list->id); ?>" class="btn btn-primary mr-2">編集</a>
-
-                                                    <form action="<?php the_url('contact/destroy'); ?>" method="post">
-                                                        <input type="hidden" name="id" value="<?php echo h($list->id); ?>">
-                                                        <input type="submit" class="btn btn-danger destroy-btn" value="削除"></input>
-                                                    </form>
-                                                </td>
+                        <div class="bg-white p-4 shadow-sm mx-auto rounded">
+                            <div class="table-responsive">
+                                <?php if (!empty($lists)) : ?>
+                                    <table class="table">
+                                        <thead class="align-items-center">
+                                            <tr class="table-primary">
+                                                <th scope="col">氏名</th>
+                                                <th scope="col">ふりがな</th>
+                                                <th scope="col">電話番号</th>
+                                                <th scope="col">メールアドレス</th>
+                                                <th scope="col">お問い合わせ内容</th>
+                                                <th scope="col" colspan="2"></th>
                                             </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            <?php else : ?>
-                                <div>お問い合わせはありません</div>
-                            <?php endif; ?>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($lists as $list) : ?>
+                                                <tr class="align-middle">
+                                                    <th scope="row" class="align-middle"><?php echo h($list->name); ?></th>
+                                                    <td class="align-middle"><?php echo h($list->kana); ?></td>
+                                                    <td class="align-middle"><?php echo h($list->tel); ?></td>
+                                                    <td class="align-middle truncate"><?php echo h($list->email); ?></td>
+                                                    <td class="align-middle truncate"><?php echo nl2br(h($list->body)); ?></td>
+                                                    <td class="align-middle text-center ">
+                                                        <a href="<?php the_url('contact/edit?id=' . $list->id); ?>" class="btn btn-primary">編集</a>
+
+                                                        <form action="<?php the_url('contact/destroy'); ?>" method="post" class="d-inline">
+                                                            <input type="hidden" name="id" value="<?php echo h($list->id); ?>">
+                                                            <input type="submit" class="btn btn-danger destroy-btn" value="削除"></input>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                <?php else : ?>
+                                    <div>お問い合わせはありません</div>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
