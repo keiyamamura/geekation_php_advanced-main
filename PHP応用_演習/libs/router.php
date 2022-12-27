@@ -7,21 +7,27 @@ function route($parse, $method)
 {
     try {
         $rpath = ltrim($parse['path'], '/');
-        $targetFile = ROOT_PATH . 'Controllers/' . "{$rpath}.php";
 
-        if (!file_exists($targetFile)) {
-            require_once ROOT_PATH . 'Views/404.php';
-            return;
+        $temp = '';
+        if ($rpath === 'index') {
+            require_once ROOT_PATH . 'Views/index.php';
+        } else if ($rpath === 'contact') {
+            $temp = 'Index';
+        } else if ($rpath === 'contact/confirm') {
+            $temp = 'Confirm';
+        } else if ($rpath === 'contact/edit') {
+            $temp = 'Edit';
+        } else if ($rpath === 'contact/destroy') {
+            $temp = 'Destroy';
         }
 
-        require_once $targetFile;
+        $functionName = $method . $temp;
+        require_once ROOT_PATH . 'Controllers/ContactController.php';
 
-        $rpath = str_replace('/', '\\', $rpath);
-        $fn = "\\controller\\{$rpath}\\{$method}";
+        $fn = "\\controller\\ContactController::{$functionName}";
         $fn();
     } catch (Throwable $e) {
         Msg::push(Msg::DEBUG, $e->getMessage());
-        Msg::push(Msg::ERROR, '何かがおかしいようです。。');
         require_once ROOT_PATH . 'Views/404.php';
     }
 }

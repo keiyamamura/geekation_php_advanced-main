@@ -8,7 +8,7 @@ function get_param($key, $default_val, $is_post = true)
 function redirect($path)
 {
     if ($path === GO_CONTACT_INDEX) {
-        $path = get_url('contact/index');
+        $path = get_url('contact');
     } elseif ($path === GO_REFERER) {
         $path = $_SERVER['HTTP_REFERER'];
     } else {

@@ -5,12 +5,11 @@ namespace view\contact;
 use lib\Msg;
 use model\ContactModel;
 
-if (ContactModel::getSession()) {
-    $contact = ContactModel::getSession();
-}
-
 function index($lists)
 {
+    if (ContactModel::getSession()) {
+        $contact = ContactModel::getSession();
+    }
 ?>
     <div class="contact">
         <div class="container py-5">
