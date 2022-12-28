@@ -33,3 +33,10 @@ body {
 	-ms-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+.truncate {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 0;
+}

@@ -49,7 +49,7 @@ $params = $player->index();
         <?php endforeach; ?>
         </table>
         <div class='paging'>
-        <?php 
+        <?php
         for($i=0;$i<=$params['pages'];$i++) {
             if(isset($_GET['page']) && $_GET['page'] == $i) {
                 echo $i+1;
