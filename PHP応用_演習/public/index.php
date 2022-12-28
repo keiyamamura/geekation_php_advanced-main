@@ -9,9 +9,9 @@ require_once ROOT_PATH . 'libs/helper.php';
 // Db
 require_once ROOT_PATH . 'Db/database.php';
 require_once ROOT_PATH . 'Db/datasource.php';
-require_once ROOT_PATH . 'Db/contact.query.php';
 
 // Model
+require_once ROOT_PATH . 'Models/contact.php';
 require_once ROOT_PATH . 'Models/abstract.model.php';
 require_once ROOT_PATH . 'Models/contact.model.php';
 

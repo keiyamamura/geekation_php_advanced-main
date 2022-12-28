@@ -5,7 +5,7 @@ use Throwable;
 
 function route($parse, $method)
 {
-    try {
+    // try {
         $rpath = ltrim($parse['path'], '/');
 
         $temp = '';
@@ -26,8 +26,8 @@ function route($parse, $method)
 
         $fn = "\\controller\\ContactController::{$functionName}";
         $fn();
-    } catch (Throwable $e) {
-        Msg::push(Msg::DEBUG, $e->getMessage());
-        require_once ROOT_PATH . 'Views/404.php';
-    }
+    // } catch (Throwable $e) {
+    //     Msg::push(Msg::DEBUG, $e->getMessage());
+    //     require_once ROOT_PATH . 'Views/404.php';
+    // }
 }

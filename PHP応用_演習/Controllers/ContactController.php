@@ -3,7 +3,7 @@
 namespace controller;
 
 use model\ContactModel;
-use db\ContactQuery;
+use model\Contact;
 use lib\Msg;
 
 class ContactController
@@ -11,7 +11,7 @@ class ContactController
     public static function getIndex()
     {
         require_once ROOT_PATH . 'Views/' . "contact/index.php";
-        $contact = new ContactQuery;
+        $contact = new Contact();
         $lists = $contact->fetchByAll();
 
         \view\contact\index($lists);
@@ -67,7 +67,7 @@ class ContactController
         $contact = ContactModel::getSession();
 
         if (!empty($contact)) {
-            ContactQuery::create($contact);
+            Contact::create($contact);
             Msg::push(Msg::INFO, '登録が完了しました。');
             ContactModel::clearSession();
             redirect(GO_CONTACT_INDEX);
@@ -84,7 +84,7 @@ class ContactController
 
         $id = get_param('id', null, false);
         if (!empty($id)) {
-            $contact = ContactQuery::fetchById($id);
+            $contact = Contact::fetchById($id);
         } else {
             redirect(GO_CONTACT_INDEX);
         }
@@ -113,7 +113,7 @@ class ContactController
             * $contact->isValidTel()
             * $contact->isValidEmail()
             * $contact->isValidBody())) {
-            ContactQuery::edit($contact);
+            Contact::edit($contact);
             Msg::push(Msg::INFO, '更新が完了しました。');
             redirect(GO_CONTACT_INDEX);
         } else {
@@ -126,7 +126,7 @@ class ContactController
     {
         $id = get_param('id', '');
         if (!empty($id)) {
-            ContactQuery::destroy($id);
+            Contact::destroy($id);
             Msg::push(Msg::INFO, '削除が完了しました。');
             redirect(GO_CONTACT_INDEX);
         } else {
