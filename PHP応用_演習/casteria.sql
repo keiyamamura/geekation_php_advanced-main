@@ -16,7 +16,6 @@ CREATE TABLE `contacts` (
 	`tel` varchar(11) COMMENT '電話番号',
 	`email` varchar(100) NOT NULL COMMENT 'メールアドレス',
 	`body` text COMMENT 'お問い合わせ内容',
-	`del_flg` int(1) NOT NULL DEFAULT '0' COMMENT '削除フラグ(1: 削除、0: 有効)',
 	`created_at` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '送信日時'
 );
 

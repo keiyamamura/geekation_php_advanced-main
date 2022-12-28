@@ -9,7 +9,7 @@ class Contact
     public static function fetchByAll()
     {
         $db = new DataSource;
-        $sql = 'SELECT id, name, kana, tel, email, body FROM contacts WHERE del_flg = 0 ORDER BY id DESC';
+        $sql = 'SELECT id, name, kana, tel, email, body FROM contacts ORDER BY id DESC';
         $result = $db->selectAll($sql, [], DataSource::CLS, ContactModel::class);
 
         return $result;
@@ -18,7 +18,7 @@ class Contact
     public static function fetchById($id)
     {
         $db = new DataSource;
-        $sql = 'SELECT id, name, kana, tel, email, body FROM contacts WHERE id = :id AND del_flg = 0';
+        $sql = 'SELECT id, name, kana, tel, email, body FROM contacts WHERE id = :id';
         $result = $db->selectOne($sql, [
             'id' => $id
         ], DataSource::CLS, ContactModel::class);
@@ -60,9 +60,7 @@ class Contact
     public static function destroy($id)
     {
         $db = new DataSource;
-        $sql = "UPDATE contacts SET del_flg = 1
-                WHERE id = :id";
-
+        $sql = "DELETE FROM contacts WHERE id = :id";
         return $db->execute($sql, [
             ':id' => $id,
         ]);
