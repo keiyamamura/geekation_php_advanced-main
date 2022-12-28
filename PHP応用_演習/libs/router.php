@@ -5,29 +5,34 @@ use Throwable;
 
 function route($parse, $method)
 {
-    // try {
+    try {
         $rpath = ltrim($parse['path'], '/');
 
-        $temp = '';
+        $methodName = '';
         if ($rpath === 'index') {
             require_once ROOT_PATH . 'Views/index.php';
-        } else if ($rpath === 'contact') {
-            $temp = 'Index';
-        } else if ($rpath === 'contact/confirm') {
-            $temp = 'Confirm';
-        } else if ($rpath === 'contact/edit') {
-            $temp = 'Edit';
-        } else if ($rpath === 'contact/destroy') {
-            $temp = 'Destroy';
+        } else if ($rpath === 'contact' && $method === 'get') {
+            $methodName = 'index';
+        } else if ($rpath === 'contact' && $method === 'post') {
+            $methodName = 'check';
+        } else if ($rpath === 'contact/confirm' && $method === 'get') {
+            $methodName = 'confirm';
+        } else if ($rpath === 'contact/confirm' && $method === 'post') {
+            $methodName = 'complete';
+        } else if ($rpath === 'contact/edit' && $method === 'get') {
+            $methodName = 'edit';
+        } else if ($rpath === 'contact/edit' && $method === 'post') {
+            $methodName = 'update';
+        } else if ($rpath === 'contact/destroy' && $method === 'post') {
+            $methodName = 'destroy';
         }
 
-        $functionName = $method . $temp;
         require_once ROOT_PATH . 'Controllers/ContactController.php';
 
-        $fn = "\\controller\\ContactController::{$functionName}";
+        $fn = "\\controller\\ContactController::{$methodName}";
         $fn();
-    // } catch (Throwable $e) {
-    //     Msg::push(Msg::DEBUG, $e->getMessage());
-    //     require_once ROOT_PATH . 'Views/404.php';
-    // }
+    } catch (Throwable $e) {
+        Msg::push(Msg::DEBUG, $e->getMessage());
+        require_once ROOT_PATH . 'Views/404.php';
+    }
 }

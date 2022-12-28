@@ -8,7 +8,7 @@ use lib\Msg;
 
 class ContactController
 {
-    public static function getIndex()
+    public static function index()
     {
         require_once ROOT_PATH . 'Views/' . "contact/index.php";
         $contact = new Contact();
@@ -17,7 +17,7 @@ class ContactController
         \view\contact\index($lists);
     }
 
-    public static function postIndex()
+    public static function check()
     {
         $contact        = new ContactModel;
         $contact->name  = get_param('name', '');
@@ -40,7 +40,7 @@ class ContactController
         }
     }
 
-    public static function getConfirm()
+    public static function confirm()
     {
         $contact = ContactModel::getSession();
 
@@ -62,7 +62,7 @@ class ContactController
         }
     }
 
-    public static function postConfirm()
+    public static function complete()
     {
         $contact = ContactModel::getSession();
 
@@ -78,7 +78,7 @@ class ContactController
         }
     }
 
-    public static function getEdit()
+    public static function edit()
     {
         require_once ROOT_PATH . 'Views/' . "contact/edit.php";
 
@@ -92,7 +92,7 @@ class ContactController
         \view\contact\edit($contact);
     }
 
-    public static function postEdit()
+    public static function update()
     {
         $contact        = new ContactModel;
         $contact->id    = (int) get_param('id', '');
@@ -122,7 +122,7 @@ class ContactController
         }
     }
 
-    public static function postDestroy()
+    public static function destroy()
     {
         $id = get_param('id', '');
         if (!empty($id)) {
